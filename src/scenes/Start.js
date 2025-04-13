@@ -38,7 +38,7 @@ export class Start extends Phaser.Scene {
 
         // Luo asteroidit
         this.time.addEvent({
-            delay: 1500,
+            delay: 1000,
             loop: true,
             callback: () => {
                 const y = Phaser.Math.Between(50, 670);
@@ -63,6 +63,12 @@ export class Start extends Phaser.Scene {
             bullet.destroy();
 
             asteroid.health -= 1;
+
+            // Hit feedback: flash red tint
+            asteroid.setTint(0xff0000);
+            this.time.delayedCall(100, () => {
+                asteroid.clearTint();
+            });
 
             if (asteroid.health <= 0) {
                 asteroid.destroy();
@@ -103,6 +109,8 @@ export class Start extends Phaser.Scene {
         this.asteroids.getChildren().forEach((asteroid) => {
             if (asteroid.x < -50) {
                 this.asteroids.remove(asteroid, true, true);
+                this.score -= 50;
+                this.scoreText.setText('Score: ' + this.score);
             }
         });
         if (Phaser.Input.Keyboard.JustDown(this.shootKey)) {
