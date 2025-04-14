@@ -27,7 +27,7 @@ export class Start extends Phaser.Scene {
 
         this.ship.play('fly');
 
-        // Näppäinten asettaminen liikkumieen
+        // N채pp채inten asettaminen liikkumieen
         this.keys = this.input.keyboard.addKeys({
             up: Phaser.Input.Keyboard.KeyCodes.W,
             down: Phaser.Input.Keyboard.KeyCodes.S,
@@ -48,7 +48,7 @@ export class Start extends Phaser.Scene {
                 const scale = Phaser.Math.FloatBetween(1, 5);
                 asteroid.setScale(scale);
 
-                // Asteroidien kestävyys vastaa niiden kokoa
+                // Asteroidien kest채vyys vastaa niiden kokoa
                 asteroid.health = Math.ceil(scale);
             }
         });
@@ -104,7 +104,7 @@ export class Start extends Phaser.Scene {
         this.ship.x = Phaser.Math.Clamp(this.ship.x, this.ship.width / 2, this.game.config.width - this.ship.width / 2);
         this.ship.y = Phaser.Math.Clamp(this.ship.y, this.ship.height / 2, this.game.config.height - this.ship.height / 2);
 
-                // Tuhoaa asteroidit jotka menevät pois ruudulta
+                // Tuhoaa asteroidit jotka menev채t pois ruudulta
         this.asteroids.getChildren().forEach((asteroid) => {
             if (asteroid.x < -50) {
                 this.asteroids.remove(asteroid, true, true);
@@ -125,3 +125,4 @@ export class Start extends Phaser.Scene {
     }
 
 }
+Start
