@@ -64,7 +64,6 @@ export class Start extends Phaser.Scene {
 
             asteroid.health -= 1;
 
-            // Hit feedback: flash red tint
             asteroid.setTint(0xff0000);
             this.time.delayedCall(100, () => {
                 asteroid.clearTint();
